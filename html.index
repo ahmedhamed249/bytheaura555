@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>By The Aura | Manifestation & Reviews</title>
+    <meta name="description" content="Discover top-rated products for manifestation, mental clarity, and spiritual growth.">
+    
+    <!-- ADDED: Favicon -->
+    <link rel="icon" href="https://yt3.ggpht.com/nPwfYUxKnpNSw8q5ipobRIYf-bVr1x2tdSaMNuFLiTTD2G0ZN3mp8xv3XhNouZvNqk9dqrUO=s600-c-k-c0x00ffffff-no-rj-rp-mo">
+
+    <!-- Google Fonts: Outfit (Modern/Clean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           CSS VARIABLES (THEME SETTINGS)
+           ========================================= */
+        :root {
+            --bg-color: #0a0a12;
+            --text-color: #ffffff;
+            --text-muted: #b0b0cc;
+            
+            /* Brand Colors - Gradients */
+            --accent-purple: #7b2cbf;
+            --accent-teal: #00b4d8;
+            --accent-gold: #ffd60a;
+            
+            /* Glassmorphism settings */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-blur: 12px;
+            
+            /* Spacing */
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        /* =========================================
+           RESET & BASE STYLES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(123, 44, 191, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 180, 216, 0.15) 0%, transparent 40%);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* =========================================
+           UTILITY CLASSES
+           ========================================= */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        /* ADDED: Section Divider */
+        .section-divider {
+            height: 1px;
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            background: linear-gradient(90deg, transparent, var(--glass-border), var(--accent-purple), var(--glass-border), transparent);
+            opacity: 0.5;
+        }
+
+        /* Glass Card Effect */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-teal));
+            color: white;
+            box-shadow: 0 4px 15px rgba(123, 44, 191, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(123, 44, 191, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #fff, #b0b0cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, var(--accent-teal), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 48px auto;
+            font-size: 1.1rem;
+        }
+
+        /* Scroll Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           HEADER
+           ========================================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            background: rgba(10, 10, 18, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo span {
+            color: var(--accent-purple);
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-teal);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: calc(var(--header-height) + 40px) 0 80px 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(123, 44, 191, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* Hero Product Image */
+        .hero-product-img {
+            max-width: 320px;
+            margin: 0 auto 40px auto;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 214, 10, 0.1);
+            color: var(--accent-gold);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 214, 10, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-product-img { max-width: 240px; }
+        }
+
+        /* =========================================
+           PRODUCT GRID
+           ========================================= */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .product-card {
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            background-color: #1a1a2e;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .card-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* =========================================
+           MANIFESTATION BLOG
+           ========================================= */
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 40px;
+        }
+
+        .blog-content p {
+            margin-bottom: 20px;
+            color: #d1d1e0;
+        }
+
+        /* =========================================
+           QUIZ SECTION
+           ========================================= */
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .quiz-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        .quiz-question {
+            font-size: 1.5rem;
+            margin-bottom: 32px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .quiz-option-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            padding: 16px;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: left;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .quiz-option-btn:hover {
+            background: rgba(123, 44, 191, 0.3);
+            border-color: var(--accent-purple);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            margin-top: 32px;
+            border-radius: 2px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-teal);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =========================================
+           SOCIAL SECTION
+           ========================================= */
+        .social-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 140px;
+            height: 140px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .social-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 12px;
+            fill: currentColor;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 60px 0 30px;
+            text-align: center;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.3);
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            max-width: 600px;
+            margin: 24px auto;
+            opacity: 0.6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="https://yt3.ggpht.com/nPwfYUxKnpNSw8q5ipobRIYf-bVr1x2tdSaMNuFLiTTD2G0ZN3mp8xv3XhNouZvNqk9dqrUO=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="By The Aura Logo" referrerpolicy="no-referrer">
+                By The <span>Aura</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#products">Products</a>
+                <a href="#manifestation">Manifestation</a>
+                <a href="#socials">Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero reveal active">
+        <div class="container hero-content">
+            <span class="badge">🔥 Hot Release</span>
+            
+            <h1>Unlock Your True Potential<br>With <span class="text-gradient">Higher Frequency In 2026</span></h1>
+            
+            <p>3 Minute Sound Trick Unlocks The "Genius Part" Of Your Brain</p>
+            
+            <!-- ADDED: Hero Product Image -->
+            <img src="https://forgeniuswave.com/std/images/prd-img.png" alt="Genius Wave Product" class="hero-product-img" referrerpolicy="no-referrer">
+            
+            <div>
+                <a href="https://hop.clickbank.net/?affiliate=soulbloom1&vendor=brainsig&tid=bytheaura-webpage&cbpage=TSL" target="_blank" class="btn btn-primary">
+                    Reprogram Your Subconscious In 7 Days
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- PRODUCT GRID SECTION -->
+    <section id="products" class="section-padding container">
+        <h2 class="reveal">Curated for Your Path</h2>
+        <p class="section-desc reveal">Powerful tools to help you align, expand, and manifest with clarity.</p>
+
+        <div class="product-grid">
+            <!-- CARD 1 -->
+            <div class="glass-panel product-card reveal">
+                <img src="https://drive.google.com/thumbnail?id=12t62rxyZ2nc93h2lKRZ_WhdyVpERiC_-&sz=w800" alt="The Billionaire Brainwave Experience" class="product-image" referrerpolicy="no-referrer">
+                <div class="product-title">The Billionaire Brainwave Experience</div>
+                <div class="product-desc">Unlock powerful subconscious programming designed to elevate your wealth mindset and amplify abundance attraction. Transform limiting beliefs and step into financial confidence with this brainwave journey.</div>
+                <a href="https://5d0e4oyltyngz8b9xf66eijc84.hop.clickbank.net" target="_blank" class="btn btn-secondary card-btn">Activate Your Abundance Now</a>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="glass-panel product-card reveal">
+                <img src="https://via.placeholder.com/400x300/2a2a40/ffffff?text=Product+2" alt="Product 2" class="product-image">
+                <div class="product-title">Crystal Healing Set</div>
+                <div class="product-desc">Premium ethically sourced crystals for chakra balancing.</div>
+                <a href="https://affiliate-link-2.com" target="_blank" class="btn btn-secondary card-btn">Get Access</a>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="glass-panel product-card reveal">
+                <img src="https://via.placeholder.com/400x300/2a2a40/ffffff?text=Product+3" alt="Product 3" class="product-image">
+                <div class="product-title">Wealth Frequency </div>
+                <div class="product-desc">Subliminal tracks designed to rewire your brain for abundance.</div>
+                <a href="https://affiliate-link-3.com" target="_blank" class="btn btn-secondary card-btn">Get Access</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- MANIFESTATION BLOG SECTION -->
+    <section id="manifestation" class="section-padding container">
+        <div class="glass-panel blog-content reveal">
+            <h2>Manifestation Insights</h2>
+            <p>
+                Manifestation is not just about wishing for things; it is about aligning your internal frequency with the reality you desire. When we shift our mindset from "wanting" (which implies lack) to "being" (which implies possession), the universe responds.
+            </p>
+            <p>
+                The tools listed on this website have been curated to help bridge that gap. Whether through subliminal reprogramming or conscious journaling, the goal is consistent, positive energy flow. Believe in the process, and the results will follow.
+            </p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- INTERACTIVE QUIZ SECTION -->
+    <section class="section-padding container">
+        <div class="glass-panel quiz-container reveal" id="quizApp">
+            
+            <div class="quiz-step active" data-step="1">
+                <div class="quiz-question">What is your biggest current goal?</div>
+                <div class="quiz-options">
+                    <button class="quiz-option-btn" onclick="nextStep(2)">Financial Abundance</button>
+                    <button class="quiz-option-btn" onclick="nextStep(2)">Inner Peace & Calm</button>
+                    <button class="quiz-option-btn" onclick="nextStep(2)">Better Relationships</button>
+                </div>
+            </div>
+
+            <div class="quiz-step" data-step="2">
+                <div class="quiz-question">How often do you meditate?</div>
+                <div class="quiz-options">
+                    <button class="quiz-option-btn" onclick="nextStep(3)">Daily</button>
+                    <button class="quiz-option-btn" onclick="nextStep(3)">Sometimes</button>
+                    <button class="quiz-option-btn" onclick="nextStep(3)">Never, but I want to</button>
+                </div>
+            </div>
+
+            <div class="quiz-step" data-step="3">
+                <div class="quiz-question">What holds you back the most?</div>
+                <div class="quiz-options">
+                    <button class="quiz-option-btn" onclick="nextStep(4)">Procrastination</button>
+                    <button class="quiz-option-btn" onclick="nextStep(4)">Self-Doubt</button>
+                    <button class="quiz-option-btn" onclick="nextStep(4)">Lack of Clarity</button>
+                </div>
+            </div>
+
+            <div class="quiz-step" data-step="4">
+                <div class="quiz-question">Are you ready to change your reality?</div>
+                <div class="quiz-options">
+                    <button class="quiz-option-btn" onclick="nextStep(5)">Yes, absolutely!</button>
+                    <button class="quiz-option-btn" onclick="nextStep(5)">I think so.</button>
+                </div>
+            </div>
+
+            <div class="quiz-step" data-step="5">
+                <h3>Your Analysis is Ready</h3>
+                <p style="color:var(--text-muted); margin-bottom: 24px;">
+                    Based on your answers, we have prepared a free guide to help you unlock your path.
+                </p>
+                <a href="https://by-the-aura-funnel.vercel.app/" class="btn btn-primary">
+                    Get My Free Mental Clarity Guide
+                </a>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SOCIAL MEDIA SECTION -->
+    <section id="socials" class="section-padding container">
+        <h2 class="reveal">Connect With The Aura</h2>
+        <div class="social-grid reveal">
+            <a href="https://www.youtube.com/@bytheaura555" target="_blank" class="glass-panel social-card" aria-label="YouTube">
+                <svg class="social-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                <span>YouTube</span>
+            </a>
+            <a href="https://www.tiktok.com/@bytheaura555" target="_blank" class="glass-panel social-card" aria-label="TikTok">
+                <svg class="social-icon" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v6.16c0 1.62-.03 3.32-1.07 4.67-1.1 1.4-2.86 2.06-4.63 2.08-2.82.02-5.18-1.92-5.74-4.63-.58-2.77 1.14-5.59 3.86-6.15.54-.11 1.09-.16 1.64-.15.06 0 .12 0 .18.01v4.16c-.34-.03-.68-.02-1.02.06-.9.23-1.49 1.15-1.28 2.08.23 1.05 1.25 1.71 2.27 1.48.92-.21 1.53-1.12 1.52-2.07V.02h.19z"/></svg>
+                <span>TikTok</span>
+            </a>
+            <a href="https://www.instagram.com/bytheaura555/" target="_blank" class="glass-panel social-card" aria-label="Instagram">
+                <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <span>Instagram</span>
+            </a>
+            <a href="https://www.facebook.com/Bytheaura555" target="_blank" class="glass-panel social-card" aria-label="Facebook">
+                <svg class="social-icon" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span>Facebook</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <a href="#" class="footer-logo">By The Aura</a>
+            <p>Aligning Frequency. Elevating Reality.</p>
+            <p class="disclaimer">
+                Affiliate Disclaimer: Some links on this site are affiliate links. I may earn a commission at no extra cost to you.
+            </p>
+            <p>&copy; <span id="year"></span> By The Aura. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function nextStep(stepNumber) {
+            const steps = document.querySelectorAll('.quiz-step');
+            steps.forEach(step => step.classList.remove('active'));
+            const target = document.querySelector(`.quiz-step[data-step="${stepNumber}"]`);
+            if (target) target.classList.add('active');
+            const percentage = ((stepNumber - 1) / (5 - 1)) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+        }
+    </script>
+</body>
+</html>
