@@ -24,6 +24,7 @@
             --text-muted: #b0b0cc;
             
             --accent-purple: #7b2cbf;
+            --accent-purple-faded: rgba(123, 44, 191, 0.6);
             --accent-teal: #00b4d8;
             --accent-gold: #ffd60a;
             
@@ -83,7 +84,6 @@
             padding: 100px 0;
         }
 
-        /* Sleek Divider Line */
         .sleek-divider {
             height: 1px;
             width: 100%;
@@ -101,6 +101,7 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
+        /* BUTTON STYLES */
         .btn {
             display: inline-block;
             padding: 16px 40px;
@@ -108,32 +109,41 @@
             font-weight: 600;
             font-size: 1.1rem;
             cursor: pointer;
-            border: none;
+            border: 1px solid transparent;
             position: relative;
-            overflow: hidden;
             z-index: 1;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            color: #ffffff !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--accent-purple), var(--accent-teal));
-            color: white;
             box-shadow: 0 4px 15px rgba(123, 44, 191, 0.4);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(123, 44, 191, 0.6);
+            transform: translateY(-3px);
+            background: var(--accent-purple-faded);
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 20px rgba(123, 44, 191, 0.6);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--accent-purple-faded);
+            border-color: var(--accent-purple);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(123, 44, 191, 0.4);
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.9rem;
         }
 
         h2 {
@@ -159,7 +169,6 @@
             font-size: 1.1rem;
         }
 
-        /* Scroll Animation */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -169,6 +178,17 @@
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse-glow {
+            0% { transform: scale(1); box-shadow: 0 0 0 rgba(123, 44, 191, 0); }
+            50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(123, 44, 191, 0.3); }
+            100% { transform: scale(1); box-shadow: 0 0 0 rgba(123, 44, 191, 0); }
+        }
+
+        .pulse-anim {
+            animation: pulse-glow 4s infinite ease-in-out;
         }
 
         /* =========================================
@@ -211,10 +231,16 @@
 
         .nav-links {
             display: flex;
+            align-items: center;
             gap: 32px;
         }
 
         .nav-links a:hover { color: var(--accent-teal); }
+        
+        .nav-highlight {
+            color: var(--accent-gold) !important;
+            font-weight: 600;
+        }
 
         @media (max-width: 768px) { .nav-links { display: none; } }
 
@@ -257,7 +283,6 @@
             margin: 0 auto 32px auto;
         }
 
-        /* Floating Hero Product Image */
         .hero-product-preview {
             max-width: 350px;
             margin: 0 auto 40px auto;
@@ -281,11 +306,6 @@
             font-weight: 600;
             margin-bottom: 24px;
             border: 1px solid rgba(255, 214, 10, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
-            .hero-product-preview { max-width: 250px; }
         }
 
         /* =========================================
@@ -336,18 +356,157 @@
         .card-btn { width: 100%; text-align: center; }
 
         /* =========================================
-           MANIFESTATION BLOG
+           BLOG SECTION FRAME (SLEEK UPDATE)
            ========================================= */
-        .blog-content {
-            max-width: 850px;
+        .aura-frame-container {
+            position: relative;
+            padding: 4px; /* Space for the glow */
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-teal), var(--accent-gold));
+            box-shadow: 0 0 30px rgba(123, 44, 191, 0.2);
+            max-width: 900px;
             margin: 0 auto;
-            padding: 50px;
+        }
+
+        .blog-content {
+            background: #0d0d1a;
+            border-radius: 26px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract design elements inside the card */
+        .blog-content::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--accent-purple);
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .blog-content::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--accent-teal);
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .blog-content h2 {
+            position: relative;
+            z-index: 1;
         }
 
         .blog-content p {
+            position: relative;
+            z-index: 1;
             margin-bottom: 24px;
             color: #d1d1e0;
+            font-size: 1.15rem;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        /* =========================================
+           SHORTS SECTION & FIX
+           ========================================= */
+        .shorts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .short-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.78%; 
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .short-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 2;
+        }
+
+        /* Fallback for blocked embeds in preview */
+        .short-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+            color: #555;
+            padding: 20px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* =========================================
+           BOOKS SECTION
+           ========================================= */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+
+        .book-card {
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .book-cover {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            background: #1a1a2e;
+        }
+        
+        .book-title {
             font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #fff;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* =========================================
@@ -362,6 +521,16 @@
             justify-content: center;
             padding: 50px;
             text-align: center;
+        }
+
+        .quiz-header-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px;
+            border: 2px solid var(--accent-purple);
+            box-shadow: 0 0 20px rgba(123, 44, 191, 0.4);
         }
 
         .quiz-step {
@@ -392,12 +561,11 @@
             cursor: pointer;
             transition: 0.2s;
             text-align: left;
-            font-family: inherit;
             font-size: 1rem;
         }
 
         .quiz-option-btn:hover {
-            background: rgba(123, 44, 191, 0.2);
+            background: var(--accent-purple-faded);
             border-color: var(--accent-purple);
             transform: translateX(5px);
         }
@@ -444,7 +612,7 @@
         }
 
         .social-card:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--accent-purple-faded);
             transform: translateY(-5px);
             border-color: var(--accent-teal);
         }
@@ -474,6 +642,16 @@
             margin-bottom: 16px;
             display: inline-block;
         }
+        
+        .footer-logo-img {
+            height: 60px;
+            width: auto;
+            border-radius: 50%;
+            margin-bottom: 16px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         .disclaimer {
             font-size: 0.85rem;
@@ -497,6 +675,7 @@
                 <a href="#manifestation">Manifestation</a>
                 <a href="#quiz">Mindset Quiz</a>
                 <a href="#socials">Connect</a>
+                <a href="https://by-the-aura-funnel.vercel.app/" target="_blank" class="nav-highlight">Free Reset Guide</a>
             </nav>
         </div>
     </header>
@@ -508,14 +687,13 @@
             
             <h1>Unlock Your True Potential<br>With <span class="text-gradient">Higher Frequency In 2026</span></h1>
             
-            <p>A simple 3-minute brainwave frequency that helps align your subconscious with abundance and mental clarity.</p>
+            <p>A powerful 7-minute brainwave frequency experience designed to align your subconscious with abundance and mental clarity. Simply listen once a day and allow the soundwaves to gently synchronize with your brain, activating deep Theta states where real transformation begins.</p>
             
-            <!-- Hero Product Image (Google Drive Thumbnail Format) -->
             <img src="https://drive.google.com/thumbnail?id=1tCoGoyNsNBc9ZyXtYkj4jCMYf6g8dlPb&sz=w800" alt="Genius Wave Tool" class="hero-product-preview" referrerpolicy="no-referrer">
             
             <div>
                 <a href="https://hop.clickbank.net/?affiliate=soulbloom1&vendor=geniusbr&pid=vsl" target="_blank" class="btn btn-primary">
-                    Reprogram Your Subconscious In 7 Days
+                    Activate The Genius Song Today
                 </a>
             </div>
         </div>
@@ -530,9 +708,9 @@
 
         <div class="product-grid">
             
-            <!-- Billionaire Brainwave (KEPT) -->
+            <!-- Billionaire Brainwave -->
             <div class="glass-panel product-card reveal">
-                <img src="https://drive.google.com/thumbnail?id=12t62rxyZ2nc93h2lKRZ_WhdyVpERiC_-&sz=w800" alt="Billionaire Brainwave" class="product-image" referrerpolicy="no-referrer">
+                <img src="https://drive.google.com/thumbnail?id=12t62rxyZ2nc93h2lKRZ_WhdyVpERiC_-&sz=w800" alt="Billionaire Brainwave" class="product-image pulse-anim" referrerpolicy="no-referrer">
                 <div class="product-title">The Billionaire Brainwave</div>
                 <div class="product-desc">Advanced auditory engineering designed to activate the brain's wealth-attraction centers and clear cognitive blocks.</div>
                 <a href="https://5d0e4oyltyngz8b9xf66eijc84.hop.clickbank.net" target="_blank" class="btn btn-secondary card-btn">Activate Your Abundance</a>
@@ -540,8 +718,7 @@
 
             <!-- 1) Message of Manifestation -->
             <div class="glass-panel product-card reveal">
-                <!-- UPDATED: Google Drive Thumbnail Format for reliability -->
-                <img src="https://drive.google.com/thumbnail?id=1DqSFfEKYdtseJY7SB5OakmWYhExkmb7e&sz=w800" alt="Message of Manifestation" class="product-image" referrerpolicy="no-referrer">
+                <img src="https://drive.google.com/thumbnail?id=1DqSFfEKYdtseJY7SB5OakmWYhExkmb7e&sz=w800" alt="Message of Manifestation" class="product-image pulse-anim" referrerpolicy="no-referrer">
                 <div class="product-title">Message of Manifestation</div>
                 <div class="product-desc">A clear, step-by-step system that helps you reprogram your inner story and call in what you truly want. Practical exercises meet soulful guidance.</div>
                 <a href="https://www.messageofmanifestation.org/main?&shield=b023am1hz9yjze5pt0z7lnu4oh" target="_blank" class="btn btn-secondary card-btn">Start Manifesting</a>
@@ -549,7 +726,10 @@
 
             <!-- 2) PinealX Activation -->
             <div class="glass-panel product-card reveal">
-                <img src="https://pinealxt.com/assets/img/heroProduct2.png" alt="PinealX Activation" class="product-image">
+                <img src="https://pinealxt.com/assets/img/heroProduct2.png" 
+                     alt="PinealX Activation" 
+                     class="product-image pulse-anim"
+                     onerror="this.src='https://images.unsplash.com/photo-1600618528240-fb9fc964b853?q=80&w=800&auto=format&fit=crop'">
                 <div class="product-title">PinealX Activation</div>
                 <div class="product-desc">Gently awaken your intuition and mental clarity with targeted audio and techniques that support deeper insight and focus.</div>
                 <a href="https://12430k2n0ysapi4n2s-hwq0le1.hop.clickbank.net" target="_blank" class="btn btn-secondary card-btn">Awaken Your Pineal</a>
@@ -557,7 +737,7 @@
 
             <!-- 3) Genius Brain Signal -->
             <div class="glass-panel product-card reveal">
-                <img src="https://astralhq.com/wp-content/uploads/2025/04/3.png" alt="Genius Brain Signal" class="product-image">
+                <img src="https://astralhq.com/wp-content/uploads/2025/04/3.png" alt="Genius Brain Signal" class="product-image pulse-anim">
                 <div class="product-title">Genius Brain Signal</div>
                 <div class="product-desc">Tune your brainwave patterns for sharper focus, creative flow, and calm confidence so you can take aligned action faster.</div>
                 <a href="https://astralhq.com/genius-brain-signal-tsl/?&shield=bcb29cuewzva1a36--r83djl6w" target="_blank" class="btn btn-secondary card-btn">Tune My Brain</a>
@@ -565,15 +745,15 @@
 
             <!-- 4) Ultimate Open Shifting -->
             <div class="glass-panel product-card reveal">
-                <img src="https://astralhq.com/wp-content/uploads/2024/11/Sized-Shifting-Vibrations-Final-1.png?hopId=12f29320-5563-4780-9858-8be2b4a26b8b" alt="Ultimate Open Shifting" class="product-image">
+                <img src="https://astralhq.com/wp-content/uploads/2024/11/Sized-Shifting-Vibrations-Final-1.png?hopId=12f29320-5563-4780-9858-8be2b4a26b8b" alt="Ultimate Open Shifting" class="product-image pulse-anim">
                 <div class="product-title">Ultimate Open Shifting</div>
                 <div class="product-desc">A practical roadmap for shifting states of consciousness and stepping into new possibilities with confidence and ease.</div>
-                <a href="https://hop.clickbank.net/affiliate=soulbloom1&vendor=astral43&tid=&cbpage=ULTIMATEOPENSHIFTING" target="_blank" class="btn btn-secondary card-btn">Begin Shifting</a>
+                <a href="https://hop.clickbank.net/?affiliate=soulbloom1&vendor=astral43&tid=" target="_blank" class="btn btn-secondary card-btn">Begin Shifting</a>
             </div>
 
             <!-- 5) Celestial Wealth Reading -->
             <div class="glass-panel product-card reveal">
-                <img src="https://lyra.divinewealthpathreading.com/assets/img/celestial-star-sectors.gif" alt="Celestial Wealth Reading" class="product-image">
+                <img src="https://lyra.divinewealthpathreading.com/assets/img/celestial-star-sectors.gif" alt="Celestial Wealth Reading" class="product-image pulse-anim">
                 <div class="product-title">Celestial Wealth Reading</div>
                 <div class="product-desc">A personalized, intuitive reading that maps abundance patterns and reveals the next opportunities for your financial and spiritual growth.</div>
                 <a href="https://hop.clickbank.net/?affiliate=soulbloom1&vendor=divinewpr&cbpage=free" target="_blank" class="btn btn-secondary card-btn">Get Your Free Reading</a>
@@ -581,7 +761,7 @@
 
             <!-- 6) Nidra Abundance Code -->
             <div class="glass-panel product-card reveal">
-                <img src="https://nidraabundancecode.com/hosted/images/42/4ed9564c9447cb876fb363b690b0bf/Master-Sabel.png" alt="Nidra Abundance Code" class="product-image">
+                <img src="https://nidraabundancecode.com/hosted/images/42/4ed9564c9447cb876fb363b690b0bf/Master-Sabel.png" alt="Nidra Abundance Code" class="product-image pulse-anim">
                 <div class="product-title">Nidra Abundance Code</div>
                 <div class="product-desc">A bedtime reprogramming method that helps release scarcity, rewire beliefs, and seed abundance while you rest.</div>
                 <a href="https://9297dhzoq2zkyac9n7s6lhnc83.hop.clickbank.net" target="_blank" class="btn btn-secondary card-btn">Unlock Abundance</a>
@@ -592,16 +772,24 @@
 
     <div class="sleek-divider"></div>
 
-    <!-- MANIFESTATION BLOG SECTION -->
+    <!-- MANIFESTATION BLOG & CTA (WITH NEW AURA FRAME) -->
     <section id="manifestation" class="section-padding container">
-        <div class="glass-panel blog-content reveal">
-            <h2 style="text-align: left; margin-bottom: 30px;">The Science of Alignment</h2>
-            <p>
-                Manifestation isn't just about wishing; it's about matching your frequency to the reality you want to experience. Every thought you have is an energetic signal. When your subconscious mind is cluttered with doubt, those signals get crossed.
-            </p>
-            <p>
-                By using frequency tools and mindful practice, you clear the "static" in your mental aura. This allows you to step into a state of *being* the person who already has what you desire, rather than staying in the cycle of *wanting*.
-            </p>
+        <div class="aura-frame-container reveal">
+            <div class="blog-content">
+                <h2>The Science of Alignment</h2>
+                <p>
+                    Manifestation isn't just about wishing; it's about matching your frequency to the reality you want to experience. Every thought you have is an energetic signal. When your subconscious mind is cluttered with doubt, those signals get crossed.
+                </p>
+                <p>
+                    By using frequency tools and mindful practice, you clear the "static" in your mental aura. This allows you to step into a state of *being* the person who already has what you desire, rather than staying in the cycle of *wanting*.
+                </p>
+                
+                <div style="margin-top: 40px; text-align: center;">
+                    <a href="https://beacons.ai/bytheaura555" target="_blank" class="btn btn-primary">
+                        Explore The Most Powerful Manifestations Tools All in One Place
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -609,14 +797,14 @@
 
     <!-- QUIZ SECTION -->
     <section id="quiz" class="section-padding container">
-        <div class="reveal">
+        <div class="reveal" style="text-align: center;">
+            <img src="https://drive.google.com/thumbnail?id=1TJ69ZhSvk0n7nXXn1AOsoKBbxKjEb_jz&sz=w400" alt="Quiz Icon" class="quiz-header-img" referrerpolicy="no-referrer">
             <h2>How Aligned Is Your Mindset Right Now?</h2>
             <p class="section-desc">In just a few questions, uncover what’s supporting you, and what may be holding you back from clarity and manifestation.</p>
         </div>
 
         <div class="glass-panel quiz-container reveal" id="quizApp">
             
-            <!-- Step 1 -->
             <div class="quiz-step active" data-step="1">
                 <div class="quiz-question">What is your primary focus this year?</div>
                 <div class="quiz-options">
@@ -626,7 +814,6 @@
                 </div>
             </div>
 
-            <!-- Step 2 -->
             <div class="quiz-step" data-step="2">
                 <div class="quiz-question">How would you describe your current "Aura"?</div>
                 <div class="quiz-options">
@@ -636,7 +823,6 @@
                 </div>
             </div>
 
-            <!-- Step 3 -->
             <div class="quiz-step" data-step="3">
                 <div class="quiz-question">What feels like your biggest obstacle?</div>
                 <div class="quiz-options">
@@ -646,7 +832,6 @@
                 </div>
             </div>
 
-            <!-- Step 4 -->
             <div class="quiz-step" data-step="4">
                 <div class="quiz-question">Are you open to daily frequency work?</div>
                 <div class="quiz-options">
@@ -655,19 +840,90 @@
                 </div>
             </div>
 
-            <!-- Final Step -->
             <div class="quiz-step" data-step="5">
-                <h3>Alignment Assessment Ready</h3>
+                <h3>Your Frequency Reset is Ready</h3>
                 <p style="color:var(--text-muted); margin-bottom: 24px; font-size: 1.1rem;">
-                    We've found a specific path that matches your current energy profile.
+                    It seems you could benefit from some grounding and realignment. We've prepared a free guide to help you reset your aura.
                 </p>
-                <a href="https://by-the-aura-funnel.vercel.app/" class="btn btn-primary">
-                    View My Custom Guide
+                <a href="https://by-the-aura-funnel.vercel.app/" target="_blank" class="btn btn-primary">
+                    Get My Free Reset Guide
                 </a>
             </div>
 
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sleek-divider"></div>
+
+    <!-- YOUTUBE SHORTS SECTION -->
+    <section id="shorts" class="section-padding container reveal">
+        <h2>Frequency Insights</h2>
+        <p class="section-desc">Quick tips and frequency hacks on our youtube channel.</p>
+        
+        <div class="shorts-container">
+            <!-- Short 1 -->
+            <div class="short-wrapper">
+                <div class="short-fallback">YouTube content will load here on live domain</div>
+                <iframe src="https://www.youtube.com/embed/Vp-CcmWq-LQ" title="Short 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <!-- Short 2 -->
+            <div class="short-wrapper">
+                <div class="short-fallback">YouTube content will load here on live domain</div>
+                <iframe src="https://www.youtube.com/embed/0xSr81ddVlQ" title="Short 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <!-- Short 3 -->
+            <div class="short-wrapper">
+                <div class="short-fallback">YouTube content will load here on live domain</div>
+                <iframe src="https://www.youtube.com/embed/tFsy-rI_1RY" title="Short 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <div class="sleek-divider"></div>
+
+    <!-- LIBRARY OF LIGHT -->
+    <section id="books" class="section-padding container reveal">
+        <h2>Library of Light</h2>
+        <p class="section-desc">Recommended reading to deepen your understanding of consciousness and creation.</p>
+        
+        <div class="book-grid">
+            <div class="glass-panel book-card">
+                <img src="https://m.media-amazon.com/images/I/815E7P9dRRL._SL1500_.jpg" alt="Becoming Supernatural" class="book-cover">
+                <h3 class="book-title">Becoming Supernatural</h3>
+                <a href="https://amzn.to/4bzsZpJ" target="_blank" class="btn btn-sm btn-secondary">View on Amazon</a>
+            </div>
+
+            <div class="glass-panel book-card">
+                <img src="https://m.media-amazon.com/images/I/81paU2uL8KL._AC_SL1500_.jpg" alt="Manifestation Journal" class="book-cover">
+                <h3 class="book-title">52-Week Manifestation Journal</h3>
+                <a href="https://amzn.to/4jTfROA" target="_blank" class="btn btn-sm btn-secondary">View on Amazon</a>
+            </div>
+
+            <div class="glass-panel book-card">
+                <img src="https://m.media-amazon.com/images/I/81xXVJoGDzL._SL1500_.jpg" alt="Breaking the Habit of Being Yourself" class="book-cover">
+                <h3 class="book-title">Breaking the Habit of Being Yourself</h3>
+                <a href="https://amzn.to/3NnnlNy" target="_blank" class="btn btn-sm btn-secondary">View on Amazon</a>
+            </div>
+            
+            <div class="glass-panel book-card">
+                <img src="https://m.media-amazon.com/images/I/31+v9WwL8eL.jpg" alt="Ask and It Is Given" class="book-cover">
+                <h3 class="book-title">Ask and It Is Given</h3>
+                <a href="https://amzn.to/49rUX5A" target="_blank" class="btn btn-sm btn-secondary">View on Amazon</a>
+            </div>
+
+            <div class="glass-panel book-card">
+                <img src="https://m.media-amazon.com/images/I/81sWUJ-Ik0L._AC_SL1500_.jpg" alt="Planners with Purpose Vision Board" class="book-cover">
+                <h3 class="book-title">Planners with Purpose Vision Board</h3>
+                <a href="https://amzn.to/4qkALZa" target="_blank" class="btn btn-sm btn-secondary">View on Amazon</a>
+            </div>
+
+            <div class="glass-panel book-card">
+                <img src="https://m.media-amazon.com/images/I/61VmNnQWHtL._SL1360_.jpg" alt="Rewire Your Brain" class="book-cover">
+                <h3 class="book-title">Rewire Your Brain With Neuroscience</h3>
+                <a href="https://amzn.to/4qliHhD" target="_blank" class="btn btn-sm btn-secondary">View on Amazon</a>
             </div>
         </div>
     </section>
@@ -680,31 +936,26 @@
         <p class="section-desc reveal">Join our community across all platforms for daily motivation and frequency tips.</p>
         
         <div class="social-grid reveal">
-            <!-- YouTube -->
             <a href="https://www.youtube.com/@bytheaura555" target="_blank" class="glass-panel social-card" aria-label="YouTube">
                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 <span>YouTube</span>
             </a>
 
-            <!-- TikTok -->
             <a href="https://www.tiktok.com/@bytheaura555" target="_blank" class="glass-panel social-card" aria-label="TikTok">
                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v6.16c0 1.62-.03 3.32-1.07 4.67-1.1 1.4-2.86 2.06-4.63 2.08-2.82.02-5.18-1.92-5.74-4.63-.58-2.77 1.14-5.59 3.86-6.15.54-.11 1.09-.16 1.64-.15.06 0 .12 0 .18.01v4.16c-.34-.03-.68-.02-1.02.06-.9.23-1.49 1.15-1.28 2.08.23 1.05 1.25 1.71 2.27 1.48.92-.21 1.53-1.12 1.52-2.07V.02h.19z"/></svg>
                 <span>TikTok</span>
             </a>
 
-            <!-- Instagram -->
             <a href="https://www.instagram.com/bytheaura555/" target="_blank" class="glass-panel social-card" aria-label="Instagram">
                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 <span>Instagram</span>
             </a>
 
-            <!-- Facebook -->
             <a href="https://www.facebook.com/Bytheaura555" target="_blank" class="glass-panel social-card" aria-label="Facebook">
                 <svg class="social-icon" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 <span>Facebook</span>
             </a>
 
-            <!-- Bitchute -->
             <a href="https://www.bitchute.com/channel/N7lSkaHOfI5s" target="_blank" class="glass-panel social-card" aria-label="Bitchute">
                 <svg class="social-icon" viewBox="0 0 24 24">
                     <path d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-12.723-5.34c-.752 0-1.36.608-1.36 1.36v7.96c0 .752.608 1.36 1.36 1.36h1.22c.752 0 1.36-.608 1.36-1.36V8.02c0-.752-.608-1.36-1.36-1.36h-1.22zm4.84 0c-.752 0-1.36.608-1.36 1.36v7.96c0 .752.608 1.36 1.36 1.36h1.22c.752 0 1.36-.608 1.36-1.36V8.02c0-.752-.608-1.36-1.36-1.36h-1.22z"/>
@@ -712,7 +963,6 @@
                 <span>Bitchute</span>
             </a>
 
-            <!-- Beacons Bio -->
             <a href="https://beacons.ai/bytheaura555" target="_blank" class="glass-panel social-card" aria-label="Beacons Bio">
                 <svg class="social-icon" viewBox="0 0 24 24">
                     <path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1-9h2v6h-2z"/>
@@ -725,6 +975,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
+            <img src="https://yt3.ggpht.com/nPwfYUxKnpNSw8q5ipobRIYf-bVr1x2tdSaMNuFLiTTD2G0ZN3mp8xv3XhNouZvNqk9dqrUO=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="By The Aura Logo" class="footer-logo-img">
             <a href="#" class="footer-logo">By The Aura</a>
             <p>Aligning Frequency. Elevating Reality.</p>
             
@@ -737,10 +988,8 @@
     </footer>
 
     <script>
-        // Update Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Scroll Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -749,7 +998,6 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Quiz Step Logic
         function nextStep(stepNumber) {
             const steps = document.querySelectorAll('.quiz-step');
             steps.forEach(step => step.classList.remove('active'));
